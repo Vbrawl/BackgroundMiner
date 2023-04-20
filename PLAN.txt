@@ -1,5 +1,5 @@
 [ ] Tools
-* [ ] Encryptor
+* [+] Encryptor
 * [ ] Webserver startup script
 * [ ] Virus compiler
 
@@ -9,26 +9,7 @@
 [ ] Continue after ensuring that no miner is running
 [+] Download encoded binary (in temp folder)
 [+] Download encoded config (in temp folder)
-[ ] Decode binary
-[ ] Decode config
+[+] Decode binary
+[+] Decode config
 [ ] Execute binary
 
-
-
-
-Encrypt-Decrypt:
-[ ] A PASSWORD
-
-
-ENCRYPTING:
-[ ] open a new file and write original file's size (in bytes)
-[ ] Read file in chunks (size: AES256.block_size)
-[ ] use encryptor.update to encrypt the data (NOTE: fill with 0s if needed)
-[ ] for each encrypted chunk, encode with base64 and write in a new line
-
-
-DECRYPTING:
-[ ] Read file's first line (size in bytes)
-[ ] Read file line by line
-[ ] Decode base64 line
-[ ] decrypt chunk with decryptor.update, remove 0s if needed and write to the file
