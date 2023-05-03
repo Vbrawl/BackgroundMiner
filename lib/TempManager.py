@@ -4,7 +4,7 @@ from typing import IO
 
 
 class TempManager:
-    TEMPDIR = tempfile.mkdtemp("mnr", "bg")
+    TEMPDIR = tempfile.mkdtemp()
 
     @staticmethod
     def get_path(filename:str) -> str:
