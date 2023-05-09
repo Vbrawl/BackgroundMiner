@@ -13,6 +13,8 @@ class Config:
     KEY:str = ""
     IV:int = 0
 
+    poll_interval = 0.5
+
 
 
     def __init__(self, **kwargs):
