@@ -11,7 +11,7 @@ class Config:
 
 
     KEY:str = ""
-    IV:int = 0
+    IV:str = ""
 
     poll_interval = 0.5
 
