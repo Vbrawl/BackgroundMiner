@@ -20,8 +20,8 @@ class Encryptor:
 
     def __init__(self, KEY: bytes, IV: bytes):
         self.cipher = Cipher(
-            AES256(base64.b64decode(KEY)),
-            CipherModes.CBC(base64.b64decode(IV))
+            AES256(KEY),
+            CipherModes.CBC(IV)
         )
 
         self.IV = IV
@@ -29,7 +29,7 @@ class Encryptor:
         self.decryptor = self.cipher.decryptor()
     
     def encrypt(self, filepath: str):
-        cipherfile_path = TempManager.get_path(os.path.split(filepath)[1])
+        cipherfile_path = TempManager.get_path(os.path.split(filepath)[1]) + '.tmp'
 
         plainfile = open(filepath, 'rb')
         cipherfile = TempManager.open_file(cipherfile_path, 'w')
@@ -59,7 +59,7 @@ class Encryptor:
         cipherfile.close()
     
     def decrypt(self, filepath: str):
-        plainfile_path = TempManager.get_path(os.path.split(filepath)[1])
+        plainfile_path = TempManager.get_path(os.path.split(filepath)[1]) + '.tmp'
 
         cipherfile = open(filepath, 'r')
         plainfile = TempManager.open_file(plainfile_path, 'wb')
