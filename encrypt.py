@@ -1,5 +1,6 @@
 from lib.Encryptor import Encryptor
 import sys
+import base64
 
 if __name__ == "__main__":
     try:
@@ -20,18 +21,18 @@ if __name__ == "__main__":
 
 
 
-    if KEY == '' or KEY == '_':
+    if KEY == b'' or KEY == b'_':
         KEY = Encryptor.generate_bytes(Encryptor.KEY_SIZE)
 
-    if IV == '' or IV == '_':
+    if IV == b'' or IV == b'_':
         IV = Encryptor.generate_bytes(Encryptor.BLOCK_SIZE)
 
     enc = Encryptor(
-        KEY,
-        IV
+        base64.b64decode(KEY),
+        base64.b64decode(IV)
     )
 
 
-    print("KEY: ", KEY.decode("UTF-8"))
-    print("IV: ", IV.decode("UTF-8"))
+    print("KEY:", KEY.decode("UTF-8"))
+    print("IV:", IV.decode("UTF-8"))
     enc.encrypt(copy)
